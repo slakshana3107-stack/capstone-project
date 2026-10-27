@@ -1,0 +1,68 @@
+{
+  "run_id": "S6_29535fc1",
+  "scenario_id": "S6",
+  "user_message": "Refund for order ORD-999999 please.",
+  "messages": [
+    {
+      "role": "system",
+      "content": "\nAGENT\n\nYou are an Instamart order and refund assistant.\nUse the available tools to check orders and apply policy rules.\nOnly completed orders may be refunded.\nA full refund is permitted when delivery takes more than 45 minutes.\nRefunds above INR 1000 must be escalated to a human lead.\nNever invent order details or refund amounts.\n"
+    },
+    {
+      "role": "user",
+      "content": "Refund for order ORD-999999 please."
+    },
+    {
+      "role": "assistant",
+      "content": null,
+      "tool_calls": [
+        {
+          "id": "call_1",
+          "name": "get_order",
+          "arguments": {
+            "order_id": "ORD-999999"
+          }
+        }
+      ]
+    },
+    {
+      "role": "tool",
+      "name": "get_order",
+      "content": "{\"error\": \"order not found\"}"
+    }
+  ],
+  "steps": [
+    {
+      "tool": "get_order",
+      "arguments": {
+        "order_id": "ORD-999999"
+      },
+      "observation": {
+        "error": "order not found"
+      }
+    }
+  ],
+  "tokens_used": 192,
+  "llm_calls": 2,
+  "tool_executions": 1,
+  "tools_executed": [
+    "get_order"
+  ],
+  "step_number": 1,
+  "result": {
+    "status": "NOT_FOUND",
+    "final_answer": "NOT_FOUND: no such order.",
+    "steps": [
+      {
+        "tool": "get_order",
+        "arguments": {
+          "order_id": "ORD-999999"
+        },
+        "observation": {
+          "error": "order not found"
+        }
+      }
+    ],
+    "llm_calls": 2,
+    "tokens_used": 192
+  }
+}
